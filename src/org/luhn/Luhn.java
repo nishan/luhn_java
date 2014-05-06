@@ -34,7 +34,11 @@ public class Luhn {
 	 */
 	public static int checkSum(String numberString, boolean noCheckDigit) {
 		int sum = 0, checkDigit = 0;
-		boolean isDouble = noCheckDigit;
+		
+		if(!noCheckDigit)
+			numberString = numberString.substring(0, numberString.length()-1);
+			
+		boolean isDouble = true;
 		for (int i = numberString.length() - 1; i >= 0; i--) {
 			int k = Integer.parseInt(String.valueOf(numberString.charAt(i)));
 			sum += sumToSingleDigit((k * (isDouble ? 2 : 1)));
